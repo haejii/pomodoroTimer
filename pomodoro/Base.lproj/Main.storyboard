@@ -16,36 +16,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pomodoro" translatesAutoresizingMaskIntoConstraints="NO" id="YPp-uU-uXq">
-                                <rect key="frame" x="87" y="68" width="240" height="100"/>
+                                <rect key="frame" x="87" y="68" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="frm-Ho-RYf"/>
                                     <constraint firstAttribute="width" constant="100" id="svz-KD-tfi"/>
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmC-C5-QzU">
-                                <rect key="frame" x="24" y="248" width="366" height="60"/>
+                                <rect key="frame" x="24" y="248" width="226" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Ts-oz-Dhu">
-                                <rect key="frame" x="48" y="338" width="318" height="4"/>
+                                <rect key="frame" x="48" y="338" width="178" height="4"/>
                             </progressView>
                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSZ-nm-APS">
                                 <rect key="frame" x="0.0" y="198" width="406" height="216"/>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="G1d-LT-bYo">
-                                <rect key="frame" x="24" y="438" width="366" height="31"/>
+                                <rect key="frame" x="24" y="438" width="226" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-E7-GhY">
-                                        <rect key="frame" x="0.0" y="0.0" width="143" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                        <connections>
+                                            <action selector="tapCancleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Lp-Pj-fEx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMM-bB-t0j">
-                                        <rect key="frame" x="223" y="0.0" width="143" height="31"/>
+                                        <rect key="frame" x="153" y="0.0" width="73" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="시작"/>
+                                        <connections>
+                                            <action selector="tapToggleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1uP-Y2-x3J"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
