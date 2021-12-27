@@ -78,6 +78,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ImageView" destination="YPp-uU-uXq" id="2ZY-uH-lf0"/>
                         <outlet property="cancelButton" destination="gyT-E7-GhY" id="RrB-nM-FVh"/>
                         <outlet property="datePicker" destination="RSZ-nm-APS" id="S4l-Om-NfG"/>
                         <outlet property="progressView" destination="4Ts-oz-Dhu" id="drX-eX-XRe"/>

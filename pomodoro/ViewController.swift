@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var toggleButton: UIButton!
     
+    @IBOutlet weak var ImageView: UIImageView!
     
     var duration = 60
     var timerStatus: TimerStatus = .end
@@ -69,9 +70,13 @@ class ViewController: UIViewController {
                 self.timeLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
                 // 프로그래스바
                 self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
-                debugPrint(self.progressView.progress)
+                //debugPrint(self.progressView.progress)
                 
                // debugPrint(self.currentSeconds)
+                
+                // CGAffineTransform  뷰의 프레임을 계산하지 않고 cgaffinetransform을 사용해 2D 그래픽을 구현
+                UIView.animate(withDuration: 0.5, delay: 0, animations: {self.ImageView.transform = CGAffineTransform(rotationAngle: .pi)})
+                UIView.animate(withDuration: 0.5, delay: 0.5, animations: {self.ImageView.transform = CGAffineTransform(rotationAngle: .pi * 2)})
                 
                 if self.currentSeconds ?? 0 <= 0 {
                     // 타이머가 종료
@@ -98,6 +103,7 @@ class ViewController: UIViewController {
             self.timeLabel.alpha = 0
             self.progressView.alpha = 0
             self.datePicker.alpha = 1
+            self.ImageView.transform = .identity // 이미지뷰가 원상태로 복귀
         })
         self.toggleButton.isSelected = false
         self.timer?.cancel()
