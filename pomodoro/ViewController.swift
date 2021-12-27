@@ -93,8 +93,12 @@ class ViewController: UIViewController {
         }
         self.timerStatus = .end
         self.cancelButton.isEnabled = false
-        self.setTimerInfoViewVisable(isHidden: true)
-        self.datePicker.isHidden = false
+        // hiddden을 사용하면 뚝뚝 끊겨서 스무스 하게 애니메이션 처럼 사라지게 하기
+        UIView.animate(withDuration: 0.5, animations: {
+            self.timeLabel.alpha = 0
+            self.progressView.alpha = 0
+            self.datePicker.alpha = 1
+        })
         self.toggleButton.isSelected = false
         self.timer?.cancel()
         self.timer = nil
@@ -119,8 +123,13 @@ class ViewController: UIViewController {
         case .end :
             self.currentSeconds = self.duration
             self.timerStatus = .start
-            self.setTimerInfoViewVisable(isHidden: false)
-            self.datePicker.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.timeLabel.alpha = 1
+                self.progressView.alpha = 1
+                self.datePicker.alpha = 0
+            })
+//            self.setTimerInfoViewVisable(isHidden: false)
+//            self.datePicker.isHidden = true
             self.toggleButton.isSelected = true
             self.cancelButton.isEnabled = true
             self.startTimer()
