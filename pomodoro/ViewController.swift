@@ -7,6 +7,7 @@
 
 
 import UIKit
+import AudioToolbox
 
 
 // 열거형
@@ -60,12 +61,22 @@ class ViewController: UIViewController {
             self.timer?.schedule(deadline: .now(), repeating: 1)
             // deadline: 3초 이후 시간 .now()+3
             self.timer?.setEventHandler(handler: { [weak self] in
-                self?.currentSeconds -= 1
-                debugPrint(self?.currentSeconds)
+                guard let self = self else { return }
+                self.currentSeconds -= 1
+                let hour = self.currentSeconds / 3600
+                let minutes = (self.currentSeconds % 3600) / 60
+                let seconds = (self.currentSeconds % 3600) % 60
+                self.timeLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
+                // 프로그래스바
+                self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
+                debugPrint(self.progressView.progress)
                 
-                if self?.currentSeconds ?? 0 <= 0 {
+               // debugPrint(self.currentSeconds)
+                
+                if self.currentSeconds ?? 0 <= 0 {
                     // 타이머가 종료
-                    self?.stopTimer()
+                    self.stopTimer()
+                    AudioServicesPlaySystemSound(1005)
                 }
             })
             
